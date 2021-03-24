@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'jest-environment-node',
@@ -18,6 +16,5 @@ module.exports = {
         'jest-watch-typeahead/filename',
         'jest-watch-typeahead/testname'
     ],
-    setupFilesAfterEnv: ['./setup-test.ts'],
-    testTimeout: 10000
+    setupFilesAfterEnv: ['./setup-test.ts']
 };

@@ -10,7 +10,7 @@
         "start-watch": "nodemon -L src/main.ts --inspect=0.0.0.0:9229 --exec ts-node",
         "lint": "eslint . --ext .ts",
         "format": "prettier --write \"src/**/*.+(js|jsx|ts|tsx|json)\"",
-        "formatTest": "prettier --write \"__tests__/**/*.+(js|jsx|ts|tsx|json)\"",
+        "formatTest": "prettier --write \"test/**/*.+(js|jsx|ts|tsx|json)\"",
         "test": "jest --watchAll",
         "test:coverage": "jest --watchAll --coverage",
         "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
