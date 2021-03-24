@@ -5,13 +5,13 @@ import logger from './logger';
 export type App = {
     close(): Promise<void>;
     getServer(): FastifyInstance;
-}
+};
 
 export async function buildApp(): Promise<App> {
     const server = fastify({ logger });
     return {
         async close(): Promise<void> {
-            await server.close()
+            await server.close();
         },
         getServer(): FastifyInstance {
             return server;
