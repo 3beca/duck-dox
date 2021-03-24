@@ -1,4 +1,4 @@
-<div align="center" width="200px"><img src="./logo.png" /></div>
+<div align="center"><img width="200" src="./logo.png" /></div>
 
 # duck-dox
 Open API documentation platform
