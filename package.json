@@ -16,7 +16,8 @@
         "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
         "test-ci": "jest --collect-coverage",
         "publish-code-coverage": "codecov",
-        "validate": "npm run format && npm run formatTest && npm run lint && npm run test-ci && npm run build"
+        "validate": "npm run format && npm run formatTest && npm run lint && npm run test-ci && npm run build",
+        "prepare": "husky install"
     },
     "author": "juanjofp, francescorivola",
     "repository": "https://github.com/3beca/duck-dox",
