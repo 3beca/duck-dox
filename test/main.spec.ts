@@ -1,4 +1,4 @@
-import { debug } from '../test-utils';
+import { debug } from './test-utils';
 test('Sum adds number', () => {
     debugger;
     // console.log(window);

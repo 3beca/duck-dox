@@ -16,5 +16,5 @@ module.exports = {
         'jest-watch-typeahead/filename',
         'jest-watch-typeahead/testname'
     ],
-    setupFilesAfterEnv: ['./setup-test.ts']
+    setupFilesAfterEnv: ['./test/setup-test.ts']
 };
