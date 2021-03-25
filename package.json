@@ -17,7 +17,8 @@
         "test-ci": "jest --collect-coverage",
         "publish-code-coverage": "codecov",
         "validate": "npm run format && npm run formatTest && npm run lint && npm run test-ci && npm run build",
-        "prepare": "husky install"
+        "prepare": "husky install",
+        "pretty-quick": "pretty-quick --staged"
     },
     "author": "juanjofp, francescorivola",
     "repository": "https://github.com/3beca/duck-dox",
@@ -49,10 +50,5 @@
         "fastify": "^3.14.0",
         "make-promises-safe": "^5.1.0",
         "pino": "^6.11.2"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "pretty-quick --staged"
-        }
     }
 }
