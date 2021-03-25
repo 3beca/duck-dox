@@ -6,8 +6,8 @@ export type Config = {
         host: string;
         port: number;
     };
-};
-
+} 
+      
 export function buildConfig(): Config {
     const config = convict<Config>({
         env: {
