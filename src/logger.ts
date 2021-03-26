@@ -1,5 +1,7 @@
-import pino from 'pino';
+import pino, { Logger } from 'pino';
+import { Config } from './config';
 
-const logger = pino({ level: 'info' });
-
-export default logger;
+export function buildLogger(options: Config['log']): Logger {
+    const { level, enabled } = options;
+    return pino({ level, enabled });
+}

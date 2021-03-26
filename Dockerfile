@@ -9,5 +9,6 @@ COPY ./package*.json ./
 RUN npm ci
 
 COPY ./build ./build
+COPY ./templates ./templates
 
 CMD ["node", "build/main.js"]

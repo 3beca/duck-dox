@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc -p tsconfig-build.json",
         "start": "node build/main.js",
-        "start-dev": "cd src && ts-node main.ts --inspect=0.0.0.0:9229",
+        "start-dev": "ts-node src/main.ts --inspect=0.0.0.0:9229",
         "start-watch": "nodemon -L src/main.ts --inspect=0.0.0.0:9229 --exec ts-node",
         "lint": "eslint . --ext .ts",
         "format": "prettier --write \"src/**/*.+(js|jsx|ts|tsx|json)\"",

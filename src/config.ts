@@ -2,6 +2,10 @@ import convict from 'convict';
 
 export type Config = {
     env: 'production' | 'development' | 'test';
+    log: {
+        level: string;
+        enabled: boolean;
+    };
     http: {
         host: string;
         port: number;
@@ -15,6 +19,20 @@ export function buildConfig(): Config {
             format: ['production', 'development', 'test'],
             default: 'development',
             env: 'NODE_ENV'
+        },
+        log: {
+            level: {
+                doc: 'The log level (default info).',
+                format: String,
+                default: 'info',
+                env: 'LOG_LEVEL'
+            },
+            enabled: {
+                doc: 'enable log (default true).',
+                format: Boolean,
+                default: true,
+                env: 'LOG_ENABLED'
+            }
         },
         http: {
             host: {
