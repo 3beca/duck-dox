@@ -1,14 +1,16 @@
 import { FastifyInstance } from 'fastify';
-import fastify from 'fastify';
-import logger from './logger';
+import { Config } from './config';
+import { buildLogger } from './logger';
+import { buildServer } from './server';
 
 export type App = {
     close(): Promise<void>;
     getServer(): FastifyInstance;
 };
 
-export async function buildApp(): Promise<App> {
-    const server = fastify({ logger });
+export async function buildApp(config: Config): Promise<App> {
+    const logger = buildLogger(config.log);
+    const server = buildServer(logger);
     return {
         async close(): Promise<void> {
             await server.close();

@@ -1,10 +1,18 @@
 import { App, buildApp } from '../src/app';
+import { buildConfig } from '../src/config';
 
 describe('App', () => {
     let app: App;
 
     beforeEach(async () => {
-        app = await buildApp();
+        const config = buildConfig();
+        app = await buildApp({
+            ...config,
+            log: {
+                ...config.log,
+                enabled: false
+            }
+        });
     });
     afterEach(async () => {
         await app.close();
@@ -22,5 +30,16 @@ describe('App', () => {
             message: 'Route GET:/not-found-route not found',
             statusCode: 404
         });
+    });
+
+    test('should return 200 with basic homepage when route is /', async () => {
+        const response = await app
+            .getServer()
+            .inject({ method: 'GET', url: '/' });
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toEqual(
+            '<html><body><h1>Welcome to Duck Dox!</h1></body></html>'
+        );
     });
 });

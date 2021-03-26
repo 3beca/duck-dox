@@ -1,16 +1,18 @@
 import { buildConfig } from './config';
 import gracefulShutdown from './graceful-shutdown';
 import 'make-promises-safe';
-import logger from './logger';
 import { buildApp } from './app';
+import pino from 'pino';
+
+const mainLogger = pino({ level: 'info' });
 
 async function main() {
-    logger.info('Starting Duck Dox');
+    mainLogger.info('Starting Duck Dox');
 
     const config = buildConfig();
-    const { http } = config;
-    const app = await buildApp();
+    const app = await buildApp(config);
 
+    const { http } = config;
     await app.getServer().listen(http.port, http.host);
 
     process.on('SIGTERM', gracefulShutdown(app));
@@ -18,6 +20,6 @@ async function main() {
 }
 
 main().catch(error => {
-    logger.error(`Error while starting up Duck Dox. ${error.message}`);
+    mainLogger.error(`Error while starting up Duck Dox. ${error.message}`);
     process.exit(1);
 });

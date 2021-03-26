@@ -1,3 +1,11 @@
+jest.mock('pino', () => () => ({
+    error: () => {
+        return;
+    },
+    info: () => {
+        return;
+    }
+}));
 import gracefulShutdown from '../src/graceful-shutdown';
 import { App } from '../src/app';
 
