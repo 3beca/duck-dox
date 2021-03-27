@@ -2,8 +2,12 @@ import { Liquid } from 'liquidjs';
 import fastify, { FastifyInstance } from 'fastify';
 import pointOfView from 'point-of-view';
 import { Logger } from 'pino';
+import { OpenAPI } from 'openapi-types';
 
-export function buildServer(logger: Logger): FastifyInstance {
+export function buildServer(
+    logger: Logger,
+    openApi: OpenAPI.Document
+): FastifyInstance {
     const liquid = new Liquid({
         extname: '.liquid'
     });
@@ -15,7 +19,10 @@ export function buildServer(logger: Logger): FastifyInstance {
         root: 'templates'
     });
     server.get('/', (req, reply) => {
-        reply.view('index.liquid', { text: 'Welcome to Duck Dox!' });
+        reply.view('index.liquid', {
+            text: 'Welcome to Duck Dox!',
+            title: openApi.info.title
+        });
     });
     return server;
 }
