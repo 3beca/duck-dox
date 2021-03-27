@@ -46,13 +46,11 @@
         "typescript": "^4.2.3"
     },
     "dependencies": {
-        "@apidevtools/swagger-parser": "^10.0.2",
         "convict": "^6.0.1",
         "fastify": "^3.14.0",
         "liquidjs": "^9.23.3",
         "make-promises-safe": "^5.1.0",
         "pino": "^6.11.2",
-        "point-of-view": "^4.14.0",
-        "swagger-parser": "^10.0.2"
+        "point-of-view": "^4.14.0"
     }
 }
