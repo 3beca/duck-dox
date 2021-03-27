@@ -8,7 +8,6 @@ describe('App', () => {
         const config = buildConfig();
         app = await buildApp({
             ...config,
-            specFile: './test/open-api-specs/simple.json',
             log: {
                 ...config.log,
                 enabled: false
@@ -40,7 +39,7 @@ describe('App', () => {
 
         expect(response.statusCode).toBe(200);
         expect(response.body).toEqual(
-            '<html><body><h1>Welcome to Duck Dox!</h1><h2>Simple API</h2></body></html>'
+            '<html><body><h1>Welcome to Duck Dox!</h1></body></html>'
         );
     });
 });
