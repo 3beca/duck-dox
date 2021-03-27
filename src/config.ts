@@ -2,6 +2,7 @@ import convict from 'convict';
 
 export type Config = {
     env: 'production' | 'development' | 'test';
+    specFile: string;
     log: {
         level: string;
         enabled: boolean;
@@ -19,6 +20,12 @@ export function buildConfig(): Config {
             format: ['production', 'development', 'test'],
             default: 'development',
             env: 'NODE_ENV'
+        },
+        specFile: {
+            doc: 'The specification file path.',
+            format: String,
+            default: '',
+            env: 'SPEC_FILE'
         },
         log: {
             level: {
