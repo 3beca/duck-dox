@@ -14,7 +14,7 @@ export function buildOperationsRoutes(openApi: OpenAPI.Document) {
         (openApi.tags || []).forEach(tag => {
             fastify.get(
                 `/operations/${toKebabCase(tag.name)}`,
-                (req: FastifyRequest, reply: FastifyReply) => {
+                (request: FastifyRequest, reply: FastifyReply): void => {
                     reply.view('operation-group.liquid', {
                         title: openApi.info.title,
                         operationGroupName: tag.name,

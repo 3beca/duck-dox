@@ -1,5 +1,10 @@
 import { Liquid } from 'liquidjs';
-import fastify, { FastifyInstance, FastifyReply, FastifyError } from 'fastify';
+import fastify, {
+    FastifyInstance,
+    FastifyReply,
+    FastifyError,
+    FastifyRequest
+} from 'fastify';
 import pointOfView from 'point-of-view';
 import { Logger } from 'pino';
 import { OpenAPI } from 'openapi-types';
@@ -20,22 +25,26 @@ export function buildServer(
         },
         root: 'templates'
     });
-    server.setNotFoundHandler(function (request, reply: FastifyReply<Server>) {
-        reply.code(404).view('not-found.liquid', {
-            title: openApi.info.title
-        });
-    });
-    server.setErrorHandler(function (
-        error: FastifyError,
-        request,
-        reply: FastifyReply<Server>
-    ) {
-        logger.error(error.message);
-        reply.code(500).view('error.liquid', {
-            title: openApi.info.title
-        });
-    });
-    server.get('/', (req, reply) => {
+    server.setNotFoundHandler(
+        (request: FastifyRequest, reply: FastifyReply<Server>): void => {
+            reply.code(404).view('not-found.liquid', {
+                title: openApi.info.title
+            });
+        }
+    );
+    server.setErrorHandler(
+        (
+            error: FastifyError,
+            request: FastifyRequest,
+            reply: FastifyReply<Server>
+        ): void => {
+            logger.error(error.message);
+            reply.code(500).view('error.liquid', {
+                title: openApi.info.title
+            });
+        }
+    );
+    server.get('/', (request: FastifyRequest, reply: FastifyReply): void => {
         reply.view('index.liquid', {
             text: 'Welcome to Duck Dox!',
             title: openApi.info.title
