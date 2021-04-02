@@ -1,5 +1,6 @@
 import { App, buildApp } from '../src/app';
 import { buildConfig } from '../src/config';
+import cheerio from 'cheerio';
 
 describe('App', () => {
     let app: App;
@@ -42,5 +43,17 @@ describe('App', () => {
         expect(response.body).toEqual(
             '<html><body><h1>Welcome to Duck Dox!</h1><h2>Simple API</h2></body></html>'
         );
+    });
+
+    test('should return 200 with operation group page based', async () => {
+        const response = await app
+            .getServer()
+            .inject({ method: 'GET', url: '/operations/simple' });
+
+        expect(response.statusCode).toBe(200);
+        const page = cheerio.load(response.body);
+        expect(page('head title').text()).toEqual('Simple API - Simple');
+        expect(page('body h1').text()).toEqual('Simple');
+        expect(page('body h2').text()).toEqual('Simple description');
     });
 });

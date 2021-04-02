@@ -9,7 +9,7 @@
         "/simple": {
             "get": {
                 "operationId": "getSimple",
-                "tags": ["Simple"],
+                "tags": [],
                 "description": "Get simple",
                 "summary": "Get simple",
                 "parameters": [],
@@ -28,12 +28,6 @@
             }
         }
     },
-    "tags": [
-        {
-            "name": "Simple",
-            "description": "Simple description"
-        }
-    ],
     "schemes": ["https"],
     "produces": ["application/json"],
     "consumes": ["application/json"],

@@ -3,6 +3,7 @@ import fastify, { FastifyInstance } from 'fastify';
 import pointOfView from 'point-of-view';
 import { Logger } from 'pino';
 import { OpenAPI } from 'openapi-types';
+import { buildOperationsRoutes } from './routes/operations';
 
 export function buildServer(
     logger: Logger,
@@ -24,5 +25,6 @@ export function buildServer(
             title: openApi.info.title
         });
     });
+    server.register(buildOperationsRoutes(openApi));
     return server;
 }
