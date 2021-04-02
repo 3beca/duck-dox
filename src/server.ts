@@ -13,6 +13,7 @@ export function buildServer(
     openApi: OpenAPI.Document
 ): FastifyInstance {
     const liquid = new Liquid({
+        cache: true,
         extname: '.liquid'
     });
     const server = fastify({ logger });
