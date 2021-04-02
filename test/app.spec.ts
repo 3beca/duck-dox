@@ -48,12 +48,12 @@ describe('App', () => {
     test('should return 200 with operation group page based', async () => {
         const response = await app
             .getServer()
-            .inject({ method: 'GET', url: '/operations/simple' });
+            .inject({ method: 'GET', url: '/operations/simple-name' });
 
         expect(response.statusCode).toBe(200);
         const page = cheerio.load(response.body);
-        expect(page('head title').text()).toEqual('Simple API - Simple');
-        expect(page('body h1').text()).toEqual('Simple');
+        expect(page('head title').text()).toEqual('Simple API - Simple name');
+        expect(page('body h1').text()).toEqual('Simple name');
         expect(page('body h2').text()).toEqual('Simple description');
     });
 });

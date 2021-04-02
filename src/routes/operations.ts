@@ -1,6 +1,10 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from 'fastify';
 import { OpenAPI } from 'openapi-types';
 
+function toKebabCase(value: string): string {
+    return value.replace(/\s/g, '-').toLowerCase();
+}
+
 export function buildOperationsRoutes(openApi: OpenAPI.Document) {
     return function (
         fastify: FastifyInstance,
@@ -9,7 +13,7 @@ export function buildOperationsRoutes(openApi: OpenAPI.Document) {
     ): void {
         (openApi.tags || []).forEach(tag => {
             fastify.get(
-                `/operations/${tag.name.toLowerCase()}`,
+                `/operations/${toKebabCase(tag.name)}`,
                 (req: FastifyRequest, reply: FastifyReply) => {
                     reply.view('operation-group.liquid', {
                         title: openApi.info.title,
