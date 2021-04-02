@@ -15,7 +15,7 @@ export function buildOperationsRoutes(openApi: OpenAPI.Document) {
             fastify.get(
                 `/operations/${toKebabCase(tag.name)}`,
                 (request: FastifyRequest, reply: FastifyReply): void => {
-                    reply.view('operation-group.liquid', {
+                    reply.view('operation-group', {
                         title: openApi.info.title,
                         operationGroupName: tag.name,
                         operationGroupDescription: tag.description

@@ -10,7 +10,7 @@ export function buildErrorHandler(openApi: OpenAPI.Document) {
         reply: FastifyReply<Server>
     ): void => {
         request.log.error(error.message);
-        reply.code(500).view('error.liquid', {
+        reply.code(500).view('error', {
             title: openApi.info.title
         });
     };

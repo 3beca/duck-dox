@@ -5,7 +5,7 @@ import { Server } from 'http';
 
 export function buildNotFoundHandler(openApi: OpenAPI.Document) {
     return (request: FastifyRequest, reply: FastifyReply<Server>): void => {
-        reply.code(404).view('not-found.liquid', {
+        reply.code(404).view('not-found', {
             title: openApi.info.title
         });
     };
