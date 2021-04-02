@@ -1,5 +1,6 @@
 import { App, buildApp } from '../src/app';
 import { buildConfig } from '../src/config';
+import cheerio from 'cheerio';
 
 describe('App', () => {
     let app: App;
@@ -25,11 +26,10 @@ describe('App', () => {
             .inject({ method: 'GET', url: '/not-found-route' });
 
         expect(response.statusCode).toBe(404);
-        const body = JSON.parse(response.body);
-        expect(body).toEqual({
-            error: 'Not Found',
-            message: 'Route GET:/not-found-route not found',
-            statusCode: 404
-        });
+        const page = cheerio.load(response.body);
+        expect(page('head title').text()).toEqual(
+            'Simple API - Page Not Found'
+        );
+        expect(page('body h1').text()).toEqual('Page Not Found');
     });
 });

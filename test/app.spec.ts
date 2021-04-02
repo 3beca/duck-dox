@@ -26,12 +26,11 @@ describe('App', () => {
             .inject({ method: 'GET', url: '/not-found-route' });
 
         expect(response.statusCode).toBe(404);
-        const body = JSON.parse(response.body);
-        expect(body).toEqual({
-            error: 'Not Found',
-            message: 'Route GET:/not-found-route not found',
-            statusCode: 404
-        });
+        const page = cheerio.load(response.body);
+        expect(page('head title').text()).toEqual(
+            'Simple API - Page Not Found'
+        );
+        expect(page('body h1').text()).toEqual('Page Not Found');
     });
 
     test('should return 200 with basic homepage when route is /', async () => {
@@ -40,9 +39,9 @@ describe('App', () => {
             .inject({ method: 'GET', url: '/' });
 
         expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(
-            '<html><body><h1>Welcome to Duck Dox!</h1><h2>Simple API</h2></body></html>'
-        );
+        const page = cheerio.load(response.body);
+        expect(page('head title').text()).toEqual('Simple API');
+        expect(page('body h1').text()).toEqual('Simple API');
     });
 
     test('should return 200 with operation group page based', async () => {

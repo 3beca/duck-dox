@@ -1,9 +1,10 @@
 import { Liquid } from 'liquidjs';
-import fastify, { FastifyInstance } from 'fastify';
+import fastify, { FastifyInstance, FastifyReply } from 'fastify';
 import pointOfView from 'point-of-view';
 import { Logger } from 'pino';
 import { OpenAPI } from 'openapi-types';
 import { buildOperationsRoutes } from './routes/operations';
+import { Server } from 'http';
 
 export function buildServer(
     logger: Logger,
@@ -18,6 +19,11 @@ export function buildServer(
             liquid
         },
         root: 'templates'
+    });
+    server.setNotFoundHandler(function (request, reply: FastifyReply<Server>) {
+        reply.code(404).view('not-found.liquid', {
+            title: openApi.info.title
+        });
     });
     server.get('/', (req, reply) => {
         reply.view('index.liquid', {
