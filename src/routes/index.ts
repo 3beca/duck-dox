@@ -10,9 +10,11 @@ export function buildIndexRoute(openApi: OpenAPI.Document) {
         fastify.get(
             '/',
             (request: FastifyRequest, reply: FastifyReply): void => {
+                const { title, description, version } = openApi.info;
                 reply.view('index', {
-                    text: 'Welcome to Duck Dox!',
-                    title: openApi.info.title
+                    title,
+                    description,
+                    version
                 });
             }
         );

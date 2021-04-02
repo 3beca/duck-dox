@@ -66,6 +66,10 @@ describe('App', () => {
         const page = cheerio.load(response.body);
         expect(page('head title').text()).toEqual('Simple API');
         expect(page('body h1').text()).toEqual('Simple API');
+        expect(page('body h2').text()).toEqual(
+            'This is the documentation of the Simple API.'
+        );
+        expect(page('body h3').text()).toEqual('version 1.0.0');
     });
 
     test('should return 200 with operation group page based', async () => {
