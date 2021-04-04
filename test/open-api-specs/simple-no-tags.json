@@ -31,7 +31,6 @@
     "schemes": ["https"],
     "produces": ["application/json"],
     "consumes": ["application/json"],
-    "definitions": {},
     "swagger": "2.0",
     "host": "api.simple.com",
     "externalDocs": {

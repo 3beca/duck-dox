@@ -7,6 +7,7 @@ import { buildOperationsRoutes } from './routes/operations';
 import { buildIndexRoute } from './routes';
 import { buildNotFoundHandler } from './handlers/not-found';
 import { buildErrorHandler } from './handlers/error';
+import { buildResourcesRoutes } from './routes/resources';
 
 export function buildServer(
     logger: Logger,
@@ -27,5 +28,6 @@ export function buildServer(
     server.setErrorHandler(buildErrorHandler(openApi));
     server.register(buildIndexRoute(openApi));
     server.register(buildOperationsRoutes(openApi));
+    server.register(buildResourcesRoutes(openApi));
     return server;
 }

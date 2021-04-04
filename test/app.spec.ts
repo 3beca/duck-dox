@@ -85,12 +85,10 @@ describe('App', () => {
     });
 
     test('should return 200 with operation page', async () => {
-        const response = await app
-            .getServer()
-            .inject({
-                method: 'GET',
-                url: '/operations/simple-name/get-simple'
-            });
+        const response = await app.getServer().inject({
+            method: 'GET',
+            url: '/operations/simple-name/get-simple'
+        });
 
         expect(response.statusCode).toBe(200);
         const page = cheerio.load(response.body);
@@ -99,5 +97,17 @@ describe('App', () => {
         );
         expect(page('body h1').text()).toEqual('Get simple');
         expect(page('body h2').text()).toEqual('Get a simple item');
+    });
+
+    test('should return 200 with resource page', async () => {
+        const response = await app.getServer().inject({
+            method: 'GET',
+            url: '/resources/simple'
+        });
+
+        expect(response.statusCode).toBe(200);
+        const page = cheerio.load(response.body);
+        expect(page('head title').text()).toEqual('Simple API - Simple');
+        expect(page('body h1').text()).toEqual('Simple');
     });
 });
