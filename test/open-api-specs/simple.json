@@ -9,8 +9,8 @@
         "/simple": {
             "get": {
                 "operationId": "getSimple",
-                "tags": ["Simple"],
-                "description": "Get simple",
+                "tags": ["Simple name"],
+                "description": "Get a simple item",
                 "summary": "Get simple",
                 "parameters": [],
                 "responses": {
@@ -20,6 +20,22 @@
                 },
                 "produces": ["application/json"],
                 "consumes": ["application/json"],
+                "security": [
+                    {
+                        "apiKey": []
+                    }
+                ]
+            },
+            "options": {
+                "operationId": "optionsSimple",
+                "description": "cors support",
+                "summary": "Options simple",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Success."
+                    }
+                },
                 "security": [
                     {
                         "apiKey": []
