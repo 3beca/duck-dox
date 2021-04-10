@@ -684,11 +684,13 @@
                                 },
                                 "targetId": {
                                     "type": "string",
-                                    "pattern": "^[a-f0-9]{24}$"
+                                    "pattern": "^[a-f0-9]{24}$",
+                                    "errorMessage": "should be a valid ObjectId"
                                 },
                                 "eventTypeId": {
                                     "type": "string",
-                                    "pattern": "^[a-f0-9]{24}$"
+                                    "pattern": "^[a-f0-9]{24}$",
+                                    "errorMessage": "should be a valid ObjectId"
                                 },
                                 "skipOnConsecutivesMatches": {
                                     "type": "boolean"
@@ -712,7 +714,32 @@
                                         }
                                     }
                                 }
-                            }
+                            },
+                            "oneOf": [
+                                {
+                                    "properties": {
+                                        "type": {
+                                            "const": "sliding"
+                                        }
+                                    },
+                                    "required": ["group", "windowSize"]
+                                },
+                                {
+                                    "properties": {
+                                        "type": {
+                                            "const": "tumbling"
+                                        }
+                                    },
+                                    "required": ["group", "windowSize"]
+                                },
+                                {
+                                    "properties": {
+                                        "type": {
+                                            "const": "realtime"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 ],
@@ -879,11 +906,13 @@
                                 },
                                 "targetId": {
                                     "type": "string",
-                                    "pattern": "^[a-f0-9]{24}$"
+                                    "pattern": "^[a-f0-9]{24}$",
+                                    "errorMessage": "should be a valid ObjectId"
                                 },
                                 "eventTypeId": {
                                     "type": "string",
-                                    "pattern": "^[a-f0-9]{24}$"
+                                    "pattern": "^[a-f0-9]{24}$",
+                                    "errorMessage": "should be a valid ObjectId"
                                 },
                                 "skipOnConsecutivesMatches": {
                                     "type": "boolean"
@@ -907,7 +936,32 @@
                                         }
                                     }
                                 }
-                            }
+                            },
+                            "oneOf": [
+                                {
+                                    "properties": {
+                                        "type": {
+                                            "const": "sliding"
+                                        }
+                                    },
+                                    "required": ["group", "windowSize"]
+                                },
+                                {
+                                    "properties": {
+                                        "type": {
+                                            "const": "tumbling"
+                                        }
+                                    },
+                                    "required": ["group", "windowSize"]
+                                },
+                                {
+                                    "properties": {
+                                        "type": {
+                                            "const": "realtime"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     {
@@ -1024,6 +1078,7 @@
                     {
                         "type": "string",
                         "pattern": "^[a-f0-9]{24}$",
+                        "errorMessage": "should be a valid ObjectId",
                         "required": false,
                         "in": "query",
                         "name": "eventTypeId"
@@ -1098,6 +1153,7 @@
                     {
                         "type": "string",
                         "pattern": "^[a-f0-9]{24}$",
+                        "errorMessage": "should be a valid ObjectId",
                         "required": false,
                         "in": "query",
                         "name": "eventTypeId"
@@ -1105,6 +1161,7 @@
                     {
                         "type": "string",
                         "pattern": "^[a-f0-9]{24}$",
+                        "errorMessage": "should be a valid ObjectId",
                         "required": false,
                         "in": "query",
                         "name": "ruleId"

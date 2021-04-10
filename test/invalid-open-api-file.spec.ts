@@ -64,7 +64,7 @@ describe('App', () => {
             const config = buildConfig();
             await buildApp({
                 ...config,
-                specFile: './test/open-api-specs/cep-admin.json',
+                specFile: './test/open-api-specs/invalid-cep-admin.json',
                 log: {
                     ...config.log,
                     enabled: false
