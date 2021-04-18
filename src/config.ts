@@ -25,20 +25,23 @@ export function buildConfig(): Config {
             doc: 'The specification file path.',
             format: String,
             default: '',
-            env: 'SPEC_FILE'
+            env: 'SPEC_FILE',
+            arg: 'specFile'
         },
         log: {
             level: {
                 doc: 'The log level (default info).',
                 format: String,
                 default: 'info',
-                env: 'LOG_LEVEL'
+                env: 'LOG_LEVEL',
+                arg: 'logLevel'
             },
             enabled: {
                 doc: 'enable log (default true).',
                 format: Boolean,
                 default: true,
-                env: 'LOG_ENABLED'
+                env: 'LOG_ENABLED',
+                arg: 'logEnabled'
             }
         },
         http: {
@@ -46,13 +49,15 @@ export function buildConfig(): Config {
                 doc: 'The host ip address to bind the http server.',
                 format: String,
                 default: 'localhost',
-                env: 'HTTP_HOST'
+                env: 'HTTP_HOST',
+                arg: 'httpHost'
             },
             port: {
                 doc: 'The port to bind the http server.',
                 format: 'port',
                 default: 8889,
-                env: 'HTTP_PORT'
+                env: 'HTTP_PORT',
+                arg: 'httpPort'
             }
         }
     });
