@@ -47,6 +47,7 @@
         },
         "/event-types/": {
             "get": {
+                "operationId": "list event types",
                 "tags": ["event types"],
                 "parameters": [
                     {
@@ -114,6 +115,7 @@
                 }
             },
             "post": {
+                "operationId": "create event type",
                 "tags": ["event types"],
                 "parameters": [
                     {
@@ -160,6 +162,7 @@
         },
         "/event-types/{id}": {
             "get": {
+                "operationId": "get event type",
                 "tags": ["event types"],
                 "parameters": [
                     {
@@ -198,6 +201,7 @@
                 }
             },
             "put": {
+                "operationId": "update event type",
                 "tags": ["event types"],
                 "parameters": [
                     {
@@ -250,6 +254,7 @@
                 }
             },
             "delete": {
+                "operationId": "delete event type",
                 "tags": ["event types"],
                 "parameters": [
                     {

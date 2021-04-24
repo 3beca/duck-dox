@@ -8,6 +8,19 @@ function toKebabCase(value: string): string {
         .toLowerCase();
 }
 
+function getOperationsByTag(tag: string, openApi: OpenAPI.Document) {
+    const operations: unknown[] = [];
+    Object.keys(openApi.paths).forEach(path => {
+        Object.keys(openApi.paths[path]).forEach(verb => {
+            const operation = openApi.paths[path][verb];
+            if (operation.operationId && (operation.tags || []).includes(tag)) {
+                operations.push({ ...operation, path, verb });
+            }
+        });
+    });
+    return operations;
+}
+
 export function buildOperationsRoutes(openApi: OpenAPI.Document) {
     return function (
         fastify: FastifyInstance,
@@ -21,7 +34,8 @@ export function buildOperationsRoutes(openApi: OpenAPI.Document) {
                     reply.view('operation-group', {
                         title: openApi.info.title,
                         operationGroupName: tag.name,
-                        operationGroupDescription: tag.description
+                        operationGroupDescription: tag.description,
+                        operations: getOperationsByTag(tag.name, openApi)
                     });
                 }
             );
@@ -29,7 +43,10 @@ export function buildOperationsRoutes(openApi: OpenAPI.Document) {
             Object.keys(openApi.paths).forEach(path => {
                 Object.keys(openApi.paths[path]).forEach(verb => {
                     const operation = openApi.paths[path][verb];
-                    if ((operation.tags || []).includes(tag.name)) {
+                    if (
+                        operation.operationId &&
+                        (operation.tags || []).includes(tag.name)
+                    ) {
                         fastify.get(
                             `/operations/${toKebabCase(tag.name)}/${toKebabCase(
                                 operation.operationId

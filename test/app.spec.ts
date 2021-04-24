@@ -33,7 +33,7 @@ describe('App', () => {
         expect(page('body h1').text()).toEqual('Page Not Found');
     });
 
-    it('should return 500 internal server error page when unhandled errors happened', async () => {
+    test('should return 500 internal server error page when unhandled errors happened', async () => {
         app.getServer().register(
             function (fastify, opts: Record<string, unknown>, next) {
                 fastify.get('/', opts, async () => {
