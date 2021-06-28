@@ -41,7 +41,7 @@
         "jest-watch-typeahead": "^0.6.4",
         "nodemon": "^2.0.7",
         "openapi-types": "^8.0.0",
-        "prettier": "^2.3.1",
+        "prettier": "^2.3.2",
         "pretty-quick": "^3.1.1",
         "ts-jest": "^26.5.6",
         "ts-node": "^10.0.0",
