@@ -54,6 +54,6 @@
         "liquidjs": "^9.23.3",
         "make-promises-safe": "^5.1.0",
         "pino": "^6.11.3",
-        "point-of-view": "^4.15.0"
+        "point-of-view": "^4.15.1"
     }
 }
