@@ -48,7 +48,7 @@
         "typescript": "^4.3.5"
     },
     "dependencies": {
-        "@apidevtools/swagger-parser": "^10.0.2",
+        "@apidevtools/swagger-parser": "^10.0.3",
         "convict": "^6.2.0",
         "fastify": "^3.20.1",
         "liquidjs": "^9.23.3",
