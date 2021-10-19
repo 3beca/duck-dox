@@ -39,7 +39,7 @@
         "husky": "^7.0.2",
         "jest": "^26.6.3",
         "jest-watch-typeahead": "^0.6.5",
-        "nodemon": "^2.0.13",
+        "nodemon": "^2.0.14",
         "openapi-types": "^8.0.0",
         "prettier": "^2.4.1",
         "pretty-quick": "^3.1.1",
