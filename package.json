@@ -28,7 +28,7 @@
         "@types/jest": "^27.0.2",
         "@types/node": "^16.11.1",
         "@types/node-fetch": "^3.0.3",
-        "@types/pino": "^6.3.11",
+        "@types/pino": "^6.3.12",
         "@typescript-eslint/eslint-plugin": "^4.33.0",
         "@typescript-eslint/parser": "^4.33.0",
         "cheerio": "^1.0.0-rc.10",
