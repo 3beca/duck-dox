@@ -51,7 +51,7 @@
         "@apidevtools/swagger-parser": "^10.0.3",
         "convict": "^6.2.1",
         "fastify": "^3.22.1",
-        "liquidjs": "^9.23.3",
+        "liquidjs": "^9.28.3",
         "make-promises-safe": "^5.1.0",
         "pino": "^6.13.3",
         "point-of-view": "^4.15.2"
